@@ -1,15 +1,15 @@
 name: CI - Build & Test
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
   workflow_call:
     secrets: # Permettre à d'autres workflows d'appeler celui-ci et de lui passer des secrets
       SLACK_WEBHOOK:
         required: false
   schedule:
-    - cron: '0 2 * * *' # Tous les jours à 02h00 UTC
+    - cron: "0 2 * * *" # Tous les jours à 02h00 UTC
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
@@ -34,7 +34,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'npm'
+          cache: "npm"
 
       - name: Installer les dépendances
         run: npm ci
